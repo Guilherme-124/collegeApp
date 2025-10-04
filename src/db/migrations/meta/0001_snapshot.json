@@ -1,0 +1,346 @@
+{
+  "id": "95c754d2-b721-46e1-b26d-5c5195d250f6",
+  "prevId": "26b5bdb8-2440-45c0-87e1-116cbc2345ea",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.borracheiro": {
+      "name": "borracheiro",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "borracheiro_id": {
+          "name": "borracheiro_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "veiculo_id": {
+          "name": "veiculo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data": {
+          "name": "data",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "borracheiro_borracheiro_id_borracheiro_id_fk": {
+          "name": "borracheiro_borracheiro_id_borracheiro_id_fk",
+          "tableFrom": "borracheiro",
+          "tableTo": "borracheiro",
+          "columnsFrom": [
+            "borracheiro_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "borracheiro_veiculo_id_veiculos_id_fk": {
+          "name": "borracheiro_veiculo_id_veiculos_id_fk",
+          "tableFrom": "borracheiro",
+          "tableTo": "veiculos",
+          "columnsFrom": [
+            "veiculo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.movimentacoes_pneus": {
+      "name": "movimentacoes_pneus",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pneu_id": {
+          "name": "pneu_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo_movimentacao": {
+          "name": "tipo_movimentacao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data": {
+          "name": "data",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "observacoes": {
+          "name": "observacoes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "movimentacoes_pneus_pneu_id_pneus_id_fk": {
+          "name": "movimentacoes_pneus_pneu_id_pneus_id_fk",
+          "tableFrom": "movimentacoes_pneus",
+          "tableTo": "pneus",
+          "columnsFrom": [
+            "pneu_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.pneus_movimentacoes": {
+      "name": "pneus_movimentacoes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pneu_id": {
+          "name": "pneu_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "movimentacao_id": {
+          "name": "movimentacao_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pneus_movimentacoes_pneu_id_pneus_id_fk": {
+          "name": "pneus_movimentacoes_pneu_id_pneus_id_fk",
+          "tableFrom": "pneus_movimentacoes",
+          "tableTo": "pneus",
+          "columnsFrom": [
+            "pneu_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "pneus_movimentacoes_movimentacao_id_movimentacoes_pneus_id_fk": {
+          "name": "pneus_movimentacoes_movimentacao_id_movimentacoes_pneus_id_fk",
+          "tableFrom": "pneus_movimentacoes",
+          "tableTo": "movimentacoes_pneus",
+          "columnsFrom": [
+            "movimentacao_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.pneus": {
+      "name": "pneus",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "marca": {
+          "name": "marca",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "km_atual": {
+          "name": "km_atual",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "km_limite": {
+          "name": "km_limite",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "preco": {
+          "name": "preco",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "medida_pneu": {
+          "name": "medida_pneu",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "numeroDot": {
+          "name": "numeroDot",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ultima_pressa": {
+          "name": "ultima_pressa",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "precao_pneu": {
+          "name": "precao_pneu",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "profundidade_sulco": {
+          "name": "profundidade_sulco",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "posicao": {
+          "name": "posicao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "veiculo_id": {
+          "name": "veiculo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pneus_veiculo_id_veiculos_id_fk": {
+          "name": "pneus_veiculo_id_veiculos_id_fk",
+          "tableFrom": "pneus",
+          "tableTo": "veiculos",
+          "columnsFrom": [
+            "veiculo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.veiculos": {
+      "name": "veiculos",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "placa": {
+          "name": "placa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "n_pneus": {
+          "name": "n_pneus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
