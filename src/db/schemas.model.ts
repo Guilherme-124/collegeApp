@@ -1,5 +1,27 @@
 import { pgTable, serial, text, timestamp, integer, numeric } from "drizzle-orm/pg-core";
 
+export const usersTable = pgTable("users", {
+  id: serial("id").primaryKey(),
+  nome: text("nome").notNull(),
+  funcao: text("funcao").default("borracheiro").notNull(),
+  telefone: text("telefone"),
+  email: text("email").notNull().unique(),
+  password: text("password").notNull(),
+  salt: text("salt").notNull(),
+});
+
+
+export const borracheiroTable = pgTable("borracheiro", {
+  id: integer("id").references(() => usersTable.id),
+  nome: text("nome").notNull(),
+  telefone: text("telefone"),
+  endereco: text("endereco"),
+  cep: text("cep"),
+  email: text("email"),
+  idade: text("idade"),
+});
+
+
 export const pneusTable = pgTable("pneus", {
   id: serial("id").primaryKey(),
   marca: text("marca").notNull(),
@@ -38,17 +60,6 @@ export const veiculosTable = pgTable("veiculos", {
   placa: text("placa").notNull(),
   nPneus: integer("n_pneus").notNull(),
   tipo: text("tipo").notNull(),
-});
-
-
-export const borracheiroTable = pgTable("borracheiro", {
-  id: serial("id").primaryKey(),
-  nome: text("nome").notNull(),
-  telefone: text("telefone"),
-  endereco: text("endereco"),
-  cep: text("cep"),
-  email: text("email"),
-  idade: text("idade"),
 });
 
 
