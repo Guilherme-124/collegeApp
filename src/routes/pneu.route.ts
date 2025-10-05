@@ -1,11 +1,11 @@
 import express from "express";
 import { 
-  createPneu, 
-  deletePneu, 
-  editInfoPneu, 
-  editMovimentacaoPneu, 
-  getPneus, 
-  pneuMovimentacao, 
+  createPneu,
+  deletePneu,
+  editInfoPneu,
+  editMovimentacaoPneu,
+  getPneus,
+  pneuMovimentacao,
 } from "../controllers/pneu.controller.ts";
 
 const router = express.Router();

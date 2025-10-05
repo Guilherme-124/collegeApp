@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, integer, numeric } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, integer, numeric, json } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -60,6 +60,7 @@ export const veiculosTable = pgTable("veiculos", {
   placa: text("placa").notNull(),
   nPneus: integer("n_pneus").notNull(),
   tipo: text("tipo").notNull(),
+  pneusIds: json("pneus_ids").default([]),
 });
 
 

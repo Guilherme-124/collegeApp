@@ -1,11 +1,11 @@
 import express from "express";
 import { 
-  createUser, 
-  editInfoUser, 
-  deleteUser, 
+  createUser,
+  editInfoUser,
+  deleteUser,
   getUsers,
   login,
- } from "../controllers/borracheiro.controller.ts";
+} from "../controllers/borracheiro.controller.ts";
 
 const router = express.Router();
 
