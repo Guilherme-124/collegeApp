@@ -19,9 +19,9 @@ export const getVeiculos = async (req: Request, res: Response) => {
 
 export const createVeiculo = async (req: Request, res: Response) => {
   try {
-    const { placa, nPneus, tipo, pneusIds } = req.body;
+    const { placa, nPneus, tipo } = req.body;
 
-      if (!placa || !nPneus || !tipo || !pneusIds) {
+      if (!placa || !nPneus || !tipo ) {
         return res.status(400).json({error: "Missing required fields"});
       }
 
@@ -31,7 +31,6 @@ export const createVeiculo = async (req: Request, res: Response) => {
         placa,
         nPneus,
         tipo,
-        pneusIds,
       })
       .returning();
 
@@ -89,3 +88,5 @@ export const deleteVeiculo = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Something went wrong"});
   }
 };
+
+/* getPneusInVeiculo */

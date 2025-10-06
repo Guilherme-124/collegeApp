@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, integer, numeric, json } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, integer, numeric } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -60,7 +60,6 @@ export const veiculosTable = pgTable("veiculos", {
   placa: text("placa").notNull(),
   nPneus: integer("n_pneus").notNull(),
   tipo: text("tipo").notNull(),
-  pneusIds: json("pneus_ids").default([]),
 });
 
 
@@ -70,15 +69,16 @@ export const ordemTable = pgTable("borracheiro", {
   idVeiculo: integer("veiculo_id").references(() => veiculosTable.id),
   data: timestamp("data").notNull(),
   status: text("status").notNull(),
+  preco: integer("preco").notNull(),
 });
 
 
 export const detalhesOrdemTable = pgTable("borracheiro", {
-  id: serial("id").primaryKey().notNull(),
+  id: serial("id").primaryKey(),
   ordemId: integer("ordem_id").references(() => ordemTable.id),
   pneuId: integer("pneu_id").references(() => pneusTable.id),
-  servico: text("servico").notNull(),
-  custo: numeric("custo").notNull(),
+  servico: text("servico"),
   kmNoMomento: integer("km_no_momento"),
+  kmMaximo: integer("km_maximo"),
 });
 

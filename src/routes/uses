@@ -9,6 +9,13 @@ delete pneu
 
 create order
 
+alerta
+  kilometragem max
+  revisao borracheiro
+
 admin
   info pneus
   info borracheiros
+
+
+
